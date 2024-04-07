@@ -1,8 +1,9 @@
 import './App.css';
+import PageRender from '../src/components/PageRender';
 
 function App() {
   return (
-    <div className="App"></div>
+    <PageRender/>
   );
 }
 
