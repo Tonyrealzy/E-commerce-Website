@@ -5,7 +5,7 @@
         {"id": 3, "title": "Televisions"}
     ],
     "products": [
-        {"id": 1, "catId": 1, "title": "Beko White Freezer"},
-        {"id": 2, "catId": 1, "title": "WhirlPool White Freezer"}
+        {"id": 1, "catId": 1, "title": "Beko Freezer"},
+        {"id": 2, "catId": 1, "title": "WhirlPool Freezer"}
     ]
 }

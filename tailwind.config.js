@@ -11,15 +11,18 @@ module.exports = {
       darkGrey: "#a9afaf",
       white: "#ffffff"
     },
+    fontFamily: {
+      customFontFamily: "Lato, Roboto, Open Sans, Helvetica, Arial, sans-serif"
+    },
     fontSize: {
-      xs: '0.75rem',
+      xs: '0.65rem',
       sm: '1rem',
       base: '1.5rem',
       lg: '2.5rem',
       xl: '3.5rem',
     },
     screens: {
-      'md': '640px',
+      'md': '768px',
       'lg': '1024px',
     },
     extend: {},
