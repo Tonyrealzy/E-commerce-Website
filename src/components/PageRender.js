@@ -1,54 +1,57 @@
 import React, { useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import MainSection from './MainSection';
 import Category from './Category';
+import { getCategories, getProductsById } from '../Fetcher';
 
 const PageRender = () => {
-    const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([{ errorMessage: 'Failed to fetch', data: [] }]);
+    const [products, setProducts] = useState([{errorMessage: 'Failed to fetch', data: [] }]);
 
     React.useEffect(() => {
-        fetch("http://localhost:3001/categories")
-        .then((response) => response.json())
-        .then(data => {
-            console.log(data);
-            setCategories(data);
-        }) 
+      const fetchData = async () => {
+        const responseObject = await getCategories();
+        setCategories(responseObject);
+      }
+      fetchData();
     }, [])
 
     const handleCategoryClicks = (id) => {
-      fetch("http://localhost:3001/products?catId=" + id)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        setProducts(data);
-      })
+      const fetchData = async () => {
+        const responseObject = await getProductsById(id);
+        setProducts(responseObject);
+      }
+      fetchData();
     }
 
     const renderCategories = () => {
-      return categories.map(c => (
+      return categories.data.map(c => (
         <Category key={c.id} id={c.id} title={c.title} onCategoryClick={() => handleCategoryClicks(c.id)} />
       ));
     }
 
     const renderProducts = () => {
-      return products.map(p => (
-        <div key={p.id}>p.title</div>
+      return products.data.map(p => (
+        <div key={p.id}>{p.title}</div>
       ));
     }
 
     return (
       <div className="font-customFontFamily">
         <Navbar/>
-        <section className="flex">
-          <section className="w-1/5 md:w-1/6 bg-grey shadow p-4">
-            {categories && renderCategories()}
+
+        <div className="flex">
+          <section className="py-1 md:py-2 text-green text-xs md:text-sm hover:text-dark' w-1/5 md:w-1/6 bg-grey shadow p-4">
+            {categories.errorMessage && <div>Error: {categories.errorMessage}</div>}
+            {categories.data && renderCategories()}
           </section>
-          <MainSection>
-            {products && renderProducts()}
-          </MainSection>
-        </section>
+
+          <section className='flex-grow font-normal text-xs md:text-sm px-4 py-2'>
+            {products.errorMessage && <div>Error: {products.errorMessage}</div>}
+            {products.data && renderProducts()}
+            </section>
+        </div>
+
         <Footer/>
       </div>
     )
