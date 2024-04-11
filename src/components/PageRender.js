@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import Category from './Category';
 import { getCategories, getProductsById } from '../Fetcher';
+import CategoryProduct from './CategoryProduct';
 
 const PageRender = () => {
     const [categories, setCategories] = useState([{ errorMessage: 'Failed to fetch', data: [] }]);
