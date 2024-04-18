@@ -1,5 +1,5 @@
 import './App.css';
-import PageRender from '../src/components/PageRender';
+import PageRender from './pages/PageRender';
 
 function App() {
   return (

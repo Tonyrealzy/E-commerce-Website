@@ -9,7 +9,7 @@
     {
       "id": 1,
       "catId": 1,
-      "title": "Beko Integrated Tall Freezer White",
+      "title": "Beko Integrated Tall Freezer",
       "productCode": "BFFD3577",
       "image": "Freezer111.jpg",
       "price": 579,
@@ -29,6 +29,7 @@
       "sku": "287494",
       "description": "Keep your fresh food tasting great in the Essentials CUL55S20 Undercounter Fridge. Store your dairy, meat, fish, and vegetables with ease. It delivers an efficient performance, which is great for your pocket, and the planet too!\n\nAdjustable shelves let you store even awkward shaped food products and make it easier to store everything. Not enough room? Make space by moving the shelves around. Simple.\n\nPop your vegetables in the salad compartment to keep them at their freshest and make the most of their shelf life. With transparent drawer fronts, you won't have to rummage around to see what you've got left.\n\nThe CUL55S20 has a reversible door, so no need to worry if you want to change the layout of your kitchen.",
       "specs": {"dimensions": "84.5 x 55.3 x 58.4 cm (H x W x D)", "capacity": "131 litres"},
+      "features": ["No need to defrost with frost free technology", "Suitable for outbuildings", "Sliding hinge", "Fast freeze"],
       "stock": 10
     },
     {
@@ -60,7 +61,7 @@
     {
         "id": 5,
         "catId": 1,
-        "title": "ZANUSSI MultiFlow ZRME38FW2 Tall Fridge White",
+        "title": "ZANUSSI MultiFlow ZRME38FW2 Tall Fridge",
         "productCode": "ZRME38FW2",
         "image": "Freezer555.jpg",
         "price": 554,
