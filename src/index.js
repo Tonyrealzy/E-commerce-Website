@@ -11,6 +11,7 @@ import {
 import ProductDetails from './components/ProductDetails';
 import Cart from './components/Cart';
 import Checkout from './components/Checkout';
+import Category from './components/Category';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,6 +20,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App />}/>
+        <Route path='categories/:categoryId' element={<Category />}/>
         <Route path='products/:productId' element={<ProductDetails />}/>
         <Route path='checkout' element={<Checkout/>}/>
         <Route path='cart' element={<Cart/>}/>
