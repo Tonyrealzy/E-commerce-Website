@@ -22,15 +22,15 @@ const ProductDetails = () => {
     }
 
   return (
-    <article className='w-full p-4 text-xs md:text-sm my-10'>
+    <article className='font-normal text-xs md:text-sm pr-4 py-2 w-full p-4 my-10'>
 
-      <section className='uppercase font-bold text-sm md:text-md mx-10 hover:scale-105 transition duration-100'>
+      <section className='uppercase font-bold text-sm md:text-md mx-16 hover:scale-105 transition duration-100'>
           {product.data.title}
       </section>
 
 
-      <div className='md:flex gap-8 md:px-10'>
-        <figure className='my-1 px-16 py-5' >
+      <div className='md:flex gap-8 md:px-4'>
+        <figure className='my-1 px-8 py-5' >
             <ImageFetcher className='hover:scale-110 transition duration-100' key={product.data.id} src={productsCalled[productId - 1].image} alt={product.data.title}/>
         </figure>
 
