@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { getAllProductsById } from '../Fetcher';
 import { productsCalled } from '../db/db';
-import ImageFetcher from './ImageFetcher';
+import ImageFetcher from '../components/ImageFetcher';
 
 const ProductDetails = () => {
     const [product, setProduct] = React.useState({errorMessage: '', data: {} });

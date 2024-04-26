@@ -1,12 +1,12 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Layout = ({ categories }) => {
     const renderCategories = () => {
         return categories.data.map(c => (
-          <li key={c.id}>
+          <li key={c.id} className='border rounded-lg bg-white text-center my-2 py-1 hover:text-dark hover:bg-grey'>
             <Link to={`/categories/${c.id}`}>{c.title}</Link>
           </li>
         ));
@@ -14,9 +14,11 @@ const Layout = ({ categories }) => {
 
   return (
     <div className="flex h-screen">
-        <section className="Sidebar h-full fixed w-24 md:w-40 shadow px-4 pt-20 md:pt-20 overflow-auto bg-grey">
+        <section className="Sidebar h-full fixed w-24 md:w-40 shadow px-4 md:px-6 pt-20 md:pt-20 overflow-auto bg-grey">
             {categories.errorMessage && <div>Error: {categories.errorMessage}</div>}
-            <ul className='text-green text-xs md:text-sm hover:text-dark'>{categories.data && renderCategories()}</ul>
+            <ul className='text-green text-xs md:text-sm'>
+              {categories.data && renderCategories()}
+            </ul>
         </section>
 
         <main className='MainSection flex flex-col flex-grow font-normal text-xs md:text-sm pl-24 md:pl-40 py-2'>

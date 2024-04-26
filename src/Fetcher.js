@@ -1,4 +1,5 @@
-const BASE_URL = 'http://localhost:3001';
+const BASE_URL = 'https://Tonyrealzy/E-commerce-Website/blob/master/src/db/db.json';
+// const BASE_URL = 'http://localhost:3001';
 
 const Fetcher = async (url) => {
     let responseObject = { errorMessage: '', data: [] };

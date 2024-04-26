@@ -1,18 +1,35 @@
 const CartReducer = (state, action) => {
+    let index = -1;
+
+    if (action.payload) {
+        index = state.cartItems.findIndex(x => x.id === action.payload.id);
+    }
+
     switch (action.type) {
         case 'ADD':
-            const index = state.cartItems.findIndex(x => x.id === action.payload.id);
+        case 'INCREASEQTY':
             if (index === -1) {
                 state.cartItems.push({...action.payload, quantity: 1});
             } else {
                 state.cartItems[index].quantity++;
             }
-            return state;
+            break;
         case 'REMOVE':
-            return state;
+            if (index > -1) {
+                state.cartItems.splice(index, 1);
+            }
+            break;
+        case 'DECREASEQTY':
+            if  (index > -1) {
+                state.cartItems[index].quantity--;
+            }
+            break;
+        case 'CLEARCART':
+            state.cartItems = [];
+            break;
         default:
-            return state;
     }
+    return state;
 }
 
 export default CartReducer

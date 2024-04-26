@@ -5,12 +5,41 @@ export const CartContext = createContext();
 
 const initialState = { cartItems: [] };
 
-const CartContextProvider = ({children}) => {
-  const [state, dispatch] = useReducer();
-  const addProduct = payload => {};
+const CartContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(CartReducer, initialState);
+
+  const addProduct = payload => {
+    dispatch({type: 'ADD', payload});
+  };
+
+  const removeProduct = payload => {
+    dispatch({type: 'REMOVE', payload});
+  };
+
+  const increaseQuantity = payload => {
+    dispatch({type: 'INCREASEQTY', payload});
+  };
+
+  const reduceQuantity = payload => {
+    dispatch({type: 'REDUCEQTY', payload});
+  };
+
+  const clearCart = () => {
+    dispatch({type: 'CLEAR', payload: undefined});
+  };
+
+  const getItems = () => {
+    return state.cartItems;
+  };
+
   const contextValues = {
     addProduct,
-    ...initialState
+    removeProduct,
+    increaseQuantity,
+    reduceQuantity,
+    clearCart,
+    getItems,
+    ...state
   }
 
   return (

@@ -6,12 +6,12 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import ProductDetails from './components/ProductDetails';
-import Cart from './components/Cart';
-import Layout from './components/Layout';
-import Checkout from './components/Checkout';
-import Category from './components/Category';
-import Home from './components/Home';
+import ProductDetails from './screens/ProductDetails';
+import Cart from './screens/Cart';
+import Layout from './screens/Layout';
+import Checkout from './screens/Checkout';
+import Category from './screens/Category';
+import Home from './screens/Home';
 
 function App() {
   const [categories, setCategories] = useState([{ errorMessage: 'Failed to fetch', data: [] }]);
