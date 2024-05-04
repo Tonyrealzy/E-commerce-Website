@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 const Layout = ({ categories }) => {
     const renderCategories = () => {
         return categories.data.map(c => (
-          <li key={c.id} className='border rounded-lg bg-white text-center my-2 py-1 hover:text-dark hover:bg-grey'>
+          <li key={c.id} className='border rounded-lg bg-white text-center my-2 py-1 hover:text-white hover:bg-green hover:border-none'>
             <Link to={`/categories/${c.id}`}>{c.title}</Link>
           </li>
         ));

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Checkout = () => {
   return (
-    <div>Checkout</div>
+    <article className='h-screen px-2'>Checkout</article>
   )
 }
 

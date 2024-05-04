@@ -7,8 +7,7 @@ import { CartContext } from '../context/CartContext';
 
 const CategoryProduct = ({title, id, specs, features, price, stock}) => {
   const navigate = useNavigate();
-  const cartContext = useContext(CartContext);
-  const { addProduct } = cartContext;
+  const { addProduct } = useContext(CartContext);
 
   return (
     <article className='w-full p-4 text-xs md:text-sm mx-auto'>
@@ -57,8 +56,8 @@ const CategoryProduct = ({title, id, specs, features, price, stock}) => {
           </section>
 
           <section className='py-1'>
-            <button onClick={() => navigate(`products/${id}`)} className='border border-dark rounded-md hover:bg-white bg-grey text-xs px-2 py-1 my-2 mr-2'>View Product</button>
-            <button className='border border-dark rounded-md hover:bg-white bg-grey text-xs px-2 py-1 my-2' onClick={() => addProduct({id, title, price})}>Add to Cart</button>
+            <button onClick={() => navigate(`/products/${id}`)} className='border border-dark rounded-md hover:bg-white bg-grey text-xs px-2 py-1 my-2 mr-2'>View Product</button>
+            <button className='border border-dark rounded-md hover:bg-white bg-grey text-xs px-2 py-1 my-2' onClick={() => addProduct({ id, title, price })}>Add to Cart</button>
           </section>
         </aside>
       </div>

@@ -1,31 +1,68 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { CartContext } from '../context/CartContext';
+import { UpIcon, DownIcon, TrashIcon } from '../components/icons';
 
 const Cart = () => {
-  return (
-    <div>
-      <h2>Shopping Cart</h2>
-      <button>Checkout</button>
+  const { getItems, clearCart, increaseQuantity, reduceQuantity, removeProduct } = useContext(CartContext);
+  const navigate = useNavigate();
 
-      <table>
-        <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-        </thead>
+  const renderCart = () => {
+    const cartItems = getItems();
 
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+    if (cartItems.length > 0) {
+      return cartItems.map((p) => (
+        <tbody key={p.id}>
+          <tr className='text-left p-2'>
+            <td className='w-3/6 p-1'>
+              <Link to={`/products/${p.id}`}>{ p.title }</Link>
+            </td>
+            <td className='w-2/6 p-1 flex'>
+              <p className='font-bold px-2'>{ p.quantity }</p>
+              <section className='flex'>
+                <UpIcon width={15} onClick={() => increaseQuantity({id: p.id})}/>
+                <DownIcon width={15} onClick={() => reduceQuantity({id: p.id})}/>
+                <TrashIcon width={15} onClick={() => removeProduct({id: p.id})}/>
+              </section>
+            </td>
+            <td className='w-1/6 p-1'>&pound;{p.price}</td>
           </tr>
         </tbody>
+      ));
+    } else {
+      return <tbody>
+        <tr>
+          <td className='text-left p-2'>
+            Your cart is currently empty. Add items to cart?
+          </td>
+        </tr>
+      </tbody>
+    }
+  }
+
+  return (
+    <div className='text-dark text-xs md:text-sm h-screen p-2'>
+      <aside className='flex justify-between px-2'>
+        <h2 className='text-sm md:text-md font-bold'>Shopping Cart</h2>
+        <button className='text-green font-medium border rounded-md px-5 py-1.5 hover:text-white hover:bg-green hover:border-none' onClick={() => navigate('/checkout')}>Checkout</button>
+      </aside>
+
+      <table className='w-full my-2'>
+        <thead>
+          <tr className='border border-dark text-left p-2'>
+            <th className='w-3/6 p-1'>Item</th>
+            <th className='w-2/6 p-1'>Quantity</th>
+            <th className='w-1/6 p-1'>Price</th>
+          </tr>
+        </thead>
+
+        { renderCart() }
       </table>
 
-      <button>Clear</button>
-      <h3>Total: </h3>
+      <aside className='flex justify-between px-2 my-3'>
+        <button className='text-green border py-1 px-5 font-medium rounded-md hover:text-white hover:bg-green hover:border-none' onClick={() => clearCart()}>Clear</button>
+        <h3 className='text-sm font-bold'>Total: &pound;{}</h3>
+      </aside>
     </div>
   )
 }
