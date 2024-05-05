@@ -21,11 +21,11 @@ const CartContextProvider = ({ children }) => {
   };
 
   const reduceQuantity = payload => {
-    dispatch({type: 'REDUCEQTY', payload});
+    dispatch({type: 'DECREASEQTY', payload});
   };
 
   const clearCart = () => {
-    dispatch({type: 'CLEAR', payload: undefined});
+    dispatch({type: 'CLEARCART', payload: undefined});
   };
 
   const getItems = () => {

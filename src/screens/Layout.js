@@ -2,8 +2,11 @@ import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Layout = ({ categories }) => {
+  const navigate = useNavigate();
+
     const renderCategories = () => {
         return categories.data.map(c => (
           <li key={c.id} className='border rounded-lg bg-white text-center my-2 py-1 hover:text-white hover:bg-green hover:border-none'>
@@ -16,8 +19,16 @@ const Layout = ({ categories }) => {
     <div className="flex h-screen">
         <section className="Sidebar h-full fixed w-24 md:w-40 shadow px-4 md:px-6 pt-20 md:pt-20 overflow-auto bg-grey">
             {categories.errorMessage && <div>Error: {categories.errorMessage}</div>}
-            <ul className='text-green text-xs md:text-sm'>
+            <ul className='text-green text-xs md:text-sm mb-20'>
               {categories.data && renderCategories()}
+            </ul>
+            <ul>
+              <li>
+                <button className='text-green text-xs md:text-sm py-1 px-5 md:px-10 my-0.5 font-medium rounded-md hover:text-white hover:bg-green hover:border-none' onClick={() => navigate('/')}>Home</button>
+              </li>
+              <li>
+                <button className='text-green text-xs md:text-sm py-1 px-6 md:px-11 my-0.5 font-medium rounded-md hover:text-white hover:bg-green hover:border-none' onClick={() => navigate('/cart')}>Cart</button>
+              </li>
             </ul>
         </section>
 

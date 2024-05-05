@@ -15,14 +15,20 @@ const Cart = () => {
         <tbody key={p.id}>
           <tr className='text-left p-2'>
             <td className='w-3/6 p-1'>
-              <Link to={`/products/${p.id}`}>{ p.title }</Link>
+              <Link to={`/products/${p.id}`} className='hover:font-medium'>{ p.title }</Link>
             </td>
             <td className='w-2/6 p-1 flex'>
-              <p className='font-bold px-2'>{ p.quantity }</p>
-              <section className='flex'>
-                <UpIcon width={15} onClick={() => increaseQuantity({id: p.id})}/>
-                <DownIcon width={15} onClick={() => reduceQuantity({id: p.id})}/>
-                <TrashIcon width={15} onClick={() => removeProduct({id: p.id})}/>
+              <p className='font-bold mx-2'>{ p.quantity }</p>
+              <section className='flex mt-0.4 md:mt-1'>
+                <aside className='mx-0.5'>
+                  <UpIcon width={15} className='mx-2' onClick={() => increaseQuantity({id: p.id})}/>
+                </aside>
+                <aside className='mx-0.5'>
+                  <DownIcon width={15} onClick={() => reduceQuantity({id: p.id})}/>
+                </aside>
+                <aside className='mx-0.5'>
+                  <TrashIcon width={15} onClick={() => removeProduct({id: p.id})}/>
+                </aside>
               </section>
             </td>
             <td className='w-1/6 p-1'>&pound;{p.price}</td>
@@ -38,7 +44,16 @@ const Cart = () => {
         </tr>
       </tbody>
     }
-  }
+  };
+
+  const renderTotal = () => {
+    const cartItems = getItems();
+
+    const total = cartItems.reduce((total, item) => 
+      (total + item.price * item.quantity), 0
+    );
+    return total;
+  };
 
   return (
     <div className='text-dark text-xs md:text-sm h-screen p-2'>
@@ -61,7 +76,7 @@ const Cart = () => {
 
       <aside className='flex justify-between px-2 my-3'>
         <button className='text-green border py-1 px-5 font-medium rounded-md hover:text-white hover:bg-green hover:border-none' onClick={() => clearCart()}>Clear</button>
-        <h3 className='text-sm font-bold'>Total: &pound;{}</h3>
+        <h3 className='text-sm font-bold'>Total: &pound;{renderTotal()}</h3>
       </aside>
     </div>
   )
