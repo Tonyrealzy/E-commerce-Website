@@ -22,7 +22,7 @@ const ProductDetails = () => {
     }
 
   return (
-    <article className='font-normal text-xs md:text-sm pr-4 py-2 w-full p-4 my-10'>
+    <article className='h-screen font-normal text-xs md:text-sm pr-4 py-2 w-full p-4 my-10'>
 
       <section className='uppercase font-bold text-sm md:text-md mx-16 hover:scale-105 transition duration-100'>
           {product.data.title}

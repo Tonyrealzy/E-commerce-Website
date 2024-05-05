@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 
-const CategoryProduct = ({title, id, specs, features, price, stock}) => {
+const CategoryProduct = ({ title, id, specs, features, price, stock }) => {
   const navigate = useNavigate();
   const { addProduct } = useContext(CartContext);
 
