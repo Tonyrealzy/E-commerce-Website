@@ -13,6 +13,7 @@ import Checkout from './screens/Checkout';
 import Category from './screens/Category';
 import Home from './screens/Home';
 import OrderConfirmation from './screens/OrderConfirmation';
+import SearchResults from './components/SearchResults';
 
 function App() {
   const [categories, setCategories] = useState([{ errorMessage: 'Failed to fetch', data: [] }]);
@@ -36,6 +37,7 @@ function App() {
             <Route path='cart' element={<Cart/>}/>
             <Route path='checkout' element={<Checkout/>}/>
             <Route path='orderConfirmation' element={<OrderConfirmation/>} />
+            <Route path='search' element={<SearchResults/>}/>
           </Route>
         </Routes>
     </BrowserRouter>

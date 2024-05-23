@@ -8,15 +8,28 @@ const searchIcon = () => (
 );
 
 const SearchBar = () => {
+    const [searchTerm, setSearchItem] = React.useState('');
+
     const navigate = useNavigate();
+
+    React.useEffect(() => {
+        const delay = setTimeout(() => {
+            if (searchTerm) {
+                navigate('/search?s=' + searchTerm);
+            }
+        }, 500);
+
+        return () => clearTimeout(delay);
+    }, [searchTerm, navigate]);
+
     const handleChange = (ev) => {
-        navigate('/search?s=' + ev.target.value);
+        setSearchItem(ev.target.value);
     };
 
   return (
     <div className='mt-1 text-xs md:text-sm relative'>
         <span className='absolute top-1 left-1 md:top-2 md:left-2'>{searchIcon()}</span>
-        <input className='text-dark w-16 md:w-28 pl-4 md:pl-6 py-0.5 md:py-1 rounded-sm outline-none' type='text' name='searchBar' placeholder='Search' onChange={handleChange} />
+        <input className='text-dark w-16 md:w-28 pl-4 md:pl-6 py-0.5 md:py-1 rounded-sm outline-none' type='search' name='searchBar' placeholder='Search' onChange={handleChange} />
     </div>
   )
 }
